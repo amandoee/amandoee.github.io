@@ -1,3 +1,3 @@
-<script>
+function test() {
     alert("test");
-</script>
+}
