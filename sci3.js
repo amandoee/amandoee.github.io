@@ -20,7 +20,7 @@ function getCookie(cname) {
 }
 
 function whichCookie() {
-    javascript:alert( document.cookie.split( ';' ).map( function( x ) { return x.trim().split( /(=)/ ); } ).reduce( function( a, b ) { a[ b[ 0 ] ] = a[ b[ 0 ] ] ? a[ b[ 0 ] ] + ', ' + b.slice( 2 ).join( '' ) : b.slice( 2 ).join( '' ); return a; }, {} )[ prompt( 'Which Cookie?' ) ] );
+    alert( document.cookie.split( ';' ).map( function( x ) { return x.trim().split( /(=)/ ); } ).reduce( function( a, b ) { a[ b[ 0 ] ] = a[ b[ 0 ] ] ? a[ b[ 0 ] ] + ', ' + b.slice( 2 ).join( '' ) : b.slice( 2 ).join( '' ); return a; }, {} )[ prompt( 'Which Cookie?' ) ] );
 }
 
 //test22
