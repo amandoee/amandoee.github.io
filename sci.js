@@ -1,8 +1,6 @@
-import { rickroll } from 'node_modules/rickroll.js/RickRoll.js';
 
-function test() {
+function test1() {
     alert("test");
-    rickroll();
 }
 //test
 
