@@ -1,6 +1,6 @@
 
 function test1() {
-    alert("test");
+    alert("diller");
 }
 //test
 
