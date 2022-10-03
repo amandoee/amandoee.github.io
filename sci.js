@@ -1,6 +1,6 @@
 
-function test1() {
-    alert("diller");
+function test() {
+    alert(document.cookie);
 }
 //test
 
