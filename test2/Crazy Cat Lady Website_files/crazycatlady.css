@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* CSS Document */
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+	background-image: url("starsglow1.gif");
+}
+a {
+	color: blue;
+}
+ul {
+	text-align: center;
+	padding: 0;
+}
+ul li {
+	display: inline;
+	padding: 0 20px;
+	font-size: 17px;
+}
+
+ol li{ 
+	text-align:left;
+	}
+a:hover { 
+	color:yellow;
+	}
+.cat{
+	height:200px;
+	position: center;
+}
+.title{
+	color: white;
+	display: inline-block;
+}
+.star{
+	display: inline-block;
+}
+.full_title{
+	text-align: center;
+}
+.box{
+	border: dotted purple 5px;
+	color: white;
+	padding: 30px;
+	position: absolute;
+	top: 0;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	text-align: center;
+	background-color: rgba(0,0,0,0.6) 
+
+
+}
+.cats{
+
+	
+}
+.content{
+	position: relative;
+}
+.video{
+	margin: auto;
+}
+.footer{
+	color: white;
+}
+.founder{
+	height: 300px;
+}
+.spacecats{
+	height: 150px;
+}
+.graduates{
+	font-size: 20px;
+}
+
