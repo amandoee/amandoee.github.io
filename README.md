@@ -1,2 +1,0 @@
-# amandoee.github.io
-a
