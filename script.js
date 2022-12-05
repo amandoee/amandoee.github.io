@@ -30,10 +30,16 @@ const models = [
     scale: 0.1,
   },
   {
-    gltf: "computer.glb",
+    gltf: "pc.glb",
     link: "../programmering.html",
     position: [0, 0, 0],
     scale: 10,
+  },
+  {
+    gltf: "lodning.glb",
+    link: "https://www.boolean-algebra.com",
+    position: [0, 0, 0],
+    scale: 0.1,
   }
 ]
 
