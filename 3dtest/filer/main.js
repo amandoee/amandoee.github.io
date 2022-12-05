@@ -166,6 +166,8 @@ class BasicCharacterControllerInput {
     };
     document.addEventListener('keydown', (e) => this._onKeyDown(e), false);
     document.addEventListener('keyup', (e) => this._onKeyUp(e), false);
+    let objects = [controlObject, ]
+    var intersects = raycaster.intersectObjects(objects,true)
   }
 
   _onKeyDown(event) {
