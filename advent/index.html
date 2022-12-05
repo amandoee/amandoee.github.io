@@ -1,0 +1,30 @@
+<!-- start with html boilerplate. I got this from [htmlboilerplates.com](https://htmlboilerplates.com) \-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<title>2022 Advent of Code, Day 1.</title>
+
+<meta charset="UTF-8" />
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<meta name="description" content="" />
+
+</head>
+
+<body>
+<h1>2022 Advent of Code, Day 1.</h1>
+<!-- get input as a file-->
+<p>Save your input as a .txt file, and select it using this file selector.</p>
+
+<input type="file" onchange="readFile(this)">
+<p>Your output:</p>
+<script> <!-- read the file as text --> function readFile(input) { let file = input.files\[0\]; &#x200B; let reader = new FileReader(); &#x200B; reader.readAsText(file); &#x200B; &#x200B; reader.onload = function() { &#x200B; <!-- split up the file into lines. --> inputarray = reader.result.split(/\\r\\n|\\n/); console.log("array contents:"); var currentelf = 0; var currentcalories=0; var topelf = 0; var topelfcalories = 0; var secondelf = 0; var secondelfcalories = 0; var thirdelf = 0; var thirdelfcalories = 0; for(var line = 0; line < inputarray.length-1; line++){ var currentint = parseInt(inputarray\[line\]); console.log("current line:" + line + " --> " + inputarray\[line\] + " current int is:" + currentint + " current elf is " + currentelf + " calorie count for current elf is " + currentcalories); if (!(currentint > 0)){ console.log(" current int is bit greater than zero!") if (currentcalories > thirdelfcalories && currentcalories < secondelfcalories && currentcalories < topelfcalories){ thirdelfcalories = currentcalories; thirdelf = currentelf; } if (currentcalories > secondelfcalories && currentcalories < topelfcalories){ thirdelfcalories = secondelfcalories; thirdelf = secondelf; secondelfcalories = currentcalories; secondelf = currentelf; } if (currentcalories > topelfcalories){ thirdelfcalories = secondelfcalories; thirdelf = secondelf; secondelfcalories = topelfcalories; secondelf = topelf; topelfcalories = currentcalories; topelf = currentelf; } &#x200B; &#x200B; currentelf++; currentcalories=0; } if (currentint > 0){ console.log(" current int is greater than zero!") currentcalories= currentcalories + parseInt(inputarray\[line\]); } &#x200B; } &#x200B; console.log(line + " The top elf is elf #"+ topelf + " with " + topelfcalories + " calories!"); console.log(line + " The second elf is elf #"+ secondelf + " with " + secondelfcalories + " calories!"); console.log(line + " The third elf is elf #"+ thirdelf + " with " + thirdelfcalories + " calories!"); window.alert("The elves with the most calories are "+ topelf + ", " + secondelf + ", and " + thirdelf + " with " + (topelfcalories + secondelfcalories + thirdelfcalories) +" calories!"); }; &#x200B; &#x200B; reader.onerror = function() { console.log("error " + reader.error); }; &#x200B; } </script>
+<p id="htmlout"></P>
+</body>
+
+</html>
