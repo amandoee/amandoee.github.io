@@ -18,29 +18,23 @@ const mouse = new THREE.Vector2();
 
 const models = [
   {
-    gltf: "laptop.glb",
-    link: "https://amandoee.github.io/programmering.html",
-    position: [0.7, 0, 0],
-    scale: 0.01,
+    gltf: "rum_uden_computer.glb",
+    link: "",
+    position: [0, 0, 0],
+    scale: 0.1,
   },
   {
-    gltf: "calculus.glb",
-    link: "https://amandoee.github.io/programmering.html",
-    position: [-0.7, 0, 0],
-    scale: 0.01,
-  }/*,
-  {
-    gltf: "https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models/2.0/Avocado/glTF-Binary/Avocado.glb",
-    link: "https://www.youtube.com/watch?v=y6120QOlsfU",
-    position: [-2, 0, 0],
-    scale: 13,
+    gltf: "skraldespand.glb",
+    link: "../fysik.html",
+    position: [0, 0, 0],
+    scale: 0.1,
   },
   {
-    gltf: "https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models/2.0/Fox/glTF-Binary/Fox.glb",
-    link: "https://www.youtube.com/watch?v=izGwDsrQ1eQ",
-    position: [1, 0, 0],
-    scale: 0.01,
-  }*/
+    gltf: "computer.glb",
+    link: "../programmering.html",
+    position: [0, 0, 0],
+    scale: 10,
+  }
 ]
 
 
@@ -64,8 +58,8 @@ const far = 900;
 
 // camera setup
 camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-camera.position.set(0, 5, 20);
-camera.lookAt(new THREE.Vector3(0, 0, 0));
+camera.position.set(5, 4, 5);
+camera.lookAt(new THREE.Vector3(0, 2, 0));
 const ambient = new THREE.AmbientLight(0x404040, 3);
 scene.add(ambient);
 
@@ -86,14 +80,19 @@ controls = new OrbitControls (camera, renderer.domElement);
 let loader = new GLTFLoader();
 //let loader = new STLLoader();
 models.forEach(modelDetails => {
-  const { gltf, scale, position, link, rotation} = modelDetails;
+  const { gltf, scale, position, link} = modelDetails;
   loader.load(gltf, ({ scene }) => {
     scene.traverse(child => {
-      child.userData.link = link;
+      //No hyperlink for the room
+      if (child.gltf== "rum_uden_computer.glb") {
+      } else {
+        child.userData.link = link;
+      }
+
     });
     modelContainer.add(scene);
     scene.scale.set(scale, scale, scale);
-    scene.position.set(...position, rotation);
+    scene.position.set(...position);
   });
 });
 
@@ -102,14 +101,14 @@ function animate(){
   
 	raycaster.setFromCamera( mouse, camera );
 	const intersects = raycaster.intersectObjects(modelContainer.children);
-  if (intersects.length > 0) {
+  if (intersects.length > 0 && intersects[0].object.userData.link!=="") {
     container.style.cursor = "pointer";
   } else {
     container.style.cursor = "initial"; 
   }
   
   modelContainer.children.forEach(child => {
-    child.rotation.y += 0.01;
+    child.rotation.y += 0.000;
   });
 
   controls.update();  
@@ -121,7 +120,9 @@ function onMouseClick() {
 	const intersects = raycaster.intersectObjects(modelContainer.children);
   if (intersects.length > 0) {
     const { link } = intersects[0].object.userData;
-    window.open(link, '_blank');
+    if (link!="") {
+      window.open(link, '_blank');
+    }
   }
 }
 
