@@ -16,6 +16,11 @@ let intersected;
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
+//q: how do i make text appear when hovering over an object?
+
+
+
+
 const models = [
   {
     gltf: "rum_uden_computer.glb",
@@ -25,19 +30,19 @@ const models = [
   },
   {
     gltf: "skraldespand.glb",
-    link: "../fysik.html",
+    link: "fysik",
     position: [0, 0, 0],
     scale: 0.1,
   },
   {
     gltf: "pc.glb",
-    link: "../programmering.html",
+    link: "programmering",
     position: [0, 0, 0],
-    scale: 10,
+    scale: 0.1,
   },
   {
     gltf: "lodning.glb",
-    link: "https://www.boolean-algebra.com",
+    link: "digitale",
     position: [0, 0, 0],
     scale: 0.1,
   }
@@ -75,6 +80,7 @@ light.position.set(10,10,30);
 scene.add(light);
 
 
+
 //renderer
 renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
@@ -102,6 +108,7 @@ models.forEach(modelDetails => {
   });
 });
 
+
 function animate(){
   requestAnimationFrame(animate);
   
@@ -109,17 +116,72 @@ function animate(){
 	const intersects = raycaster.intersectObjects(modelContainer.children);
   if (intersects.length > 0 && intersects[0].object.userData.link!=="") {
     container.style.cursor = "pointer";
+
+    //make object emission for 5 seconds. After 5 seconds, remove glow
+
   } else {
     container.style.cursor = "initial"; 
+    //remove glow when not hovered
   }
   
   modelContainer.children.forEach(child => {
     child.rotation.y += 0.000;
   });
 
+  
+
   controls.update();  
   renderer.render(scene, camera);
 }
+
+function openSideMenu(link) {
+
+  // Get the side menu element
+  var sideMenu = document.getElementById(link);
+
+  var sideMenus = document.getElementsByClassName("side-menu");
+
+  // Loop through all side menus
+  for (var i = 0; i < sideMenus.length; i++) {
+    if ((sideMenus[i].style.display == "block") && (sideMenus[i] != sideMenu)) {
+      return;
+    }
+  }
+  // Check if the side menu is already open
+  if (sideMenu.style.display === "block") {
+    sideMenu.animate([
+      // keyframes
+      { transform: 'translateX(0%)' },
+      { transform: 'translateX(-100%)' }
+    ], {
+      // timing options
+      duration: 1000,
+      easing: "ease-in-out",
+      fill: "forwards"
+    });
+    // If the menu is already open, close it
+    setTimeout(() => {
+      sideMenu.style.display = "none";
+    }, 1000);
+  } else {
+    // If the menu is closed, open it
+    sideMenu.animate([
+      // keyframes
+      { transform: 'translateX(-100%)' },
+      { transform: 'translateX(0%)' }
+    ], {
+      // timing options
+      duration: 1000,
+      easing: "ease-in-out",
+      fill: "forwards"
+    });
+
+
+    sideMenu.style.display = "block";
+  }
+}
+
+
 
 function onMouseClick() {
   raycaster.setFromCamera( mouse, camera );
@@ -127,7 +189,7 @@ function onMouseClick() {
   if (intersects.length > 0) {
     const { link } = intersects[0].object.userData;
     if (link!="") {
-      window.open(link, '_blank');
+      openSideMenu(link);
     }
   }
 }

@@ -1,9 +1,92 @@
 body {
   margin: 0;
   overflow: hidden;
+  
 }
+
+.side-menu {
+  /* Style the menu */
+
+  /*Make it cool as hell*/
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+
+  /* Position the menu */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+
+  /* Hide the menu by default */
+  display: none;
+}
+
+.side-menu.open {
+  /* When the menu is open, slide it in from the left */
+  left: 0;
+}
+
+.side-menu h2 {
+  margin-top: 0;
+}
+
+.side-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-menu li a {
+  /*
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 0;
+  display: block;
+  */
+  display:block; /* Make the links appear below each other */
+  color: #fff; /* White text color */
+  padding: 10px 15px 10px 40px; /* Padding for the links */
+  text-decoration: none; /* Remove underline from links */
+  font-size: 16px; /* Increase font-size */
+  transition: all 0.3s ease; /* Add transition for hover effects */
+  border-bottom: 1px solid #444; /* Add a dark bottom border */
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; /* Add a 3D text effect */
+}
+
+.side-menu a:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+.side-menu a:active {
+  background-color: #222;
+  color: #fff;
+}
+
+    /* Style the input box */
+    #boolean-input {
+      width: 300px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+
+    /* Style the output box */
+    #boolean-output {
+      width: 300px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+    }
 
 .scene {
   width: 100vw;
   height: 100vh;
 }
+
