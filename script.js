@@ -51,6 +51,12 @@ const models = [
     link: "calculus",
     position: [0, 0, 0],
     scale: 0.1,
+  },
+  {
+    gltf: "rum_v2.glb",
+    link: "",
+    position: [0, 0, 0],
+    scale: 0.1,
   }
 ]
 
