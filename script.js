@@ -23,7 +23,7 @@ const mouse = new THREE.Vector2();
 
 const models = [
   {
-    gltf: "rum_uden_computer.glb",
+    gltf: "rum_uden_items.glb",
     link: "",
     position: [0, 0, 0],
     scale: 0.1,
@@ -43,6 +43,12 @@ const models = [
   {
     gltf: "lodning.glb",
     link: "digitale",
+    position: [0, 0, 0],
+    scale: 0.1,
+  },
+  {
+    gltf: "lommeregner.glb",
+    link: "calculus",
     position: [0, 0, 0],
     scale: 0.1,
   }
@@ -96,7 +102,7 @@ models.forEach(modelDetails => {
   loader.load(gltf, ({ scene }) => {
     scene.traverse(child => {
       //No hyperlink for the room
-      if (child.gltf== "rum_uden_computer.glb") {
+      if (child.gltf== "rum_uden_items.glb") {
       } else {
         child.userData.link = link;
       }
