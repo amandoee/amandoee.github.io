@@ -8,11 +8,18 @@
 </head>
 <body>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>$.getJSON('https://api.db-ip.com/v2/free/self', function(data) {
   test = data;
   console.log(test);
-});</script>
-  
+  if (test.ipAddress=="185.45.22.140") {
+    alert("Your IP has been banned from this site. Redirecting...")
+    window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+  }
+});
+
+
+</script>
 <!-- partial:index.partial.html -->
 <div class="scene">
 </div>
